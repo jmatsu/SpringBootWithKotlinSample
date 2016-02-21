@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan
 
 @ComponentScan
 @EnableAutoConfiguration
-public class Application {
+class Application {
     companion object {
         @JvmStatic
         fun main(args: Array<String>): Unit {
