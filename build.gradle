@@ -1,19 +1,23 @@
 buildscript {
     ext {
-        kotlin_version = '0.14.449'
-        spring_boot_plugin_version = "1.2.6.RELEASE"
-        spring_boot_version = "1.2.2.RELEASE"
+        kotlin_version = '1.0.0'
+        spring_boot_version = "1.4.0.BUILD-SNAPSHOT"
+        springloaded_version = "1.2.5.RELEASE"
     }
 
     repositories {
-        maven { url "https://repo.spring.io/libs-release" }
         mavenLocal()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
         jcenter()
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_plugin_version"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+
+        // Hot swap
+        classpath "org.springframework:springloaded:$springloaded_version"
     }
 }
 
@@ -23,8 +27,9 @@ apply plugin: 'spring-boot'
 
 repositories {
     mavenLocal()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
     jcenter()
-    maven { url "https://repo.spring.io/libs-release" }
 }
 
 sourceSets {
@@ -42,7 +47,7 @@ sourceSets {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+    compile "org.springframework.boot:spring-boot-starter-web"
 
     testCompile 'junit:junit:4.12'
 }
