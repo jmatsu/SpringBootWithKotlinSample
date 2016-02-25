@@ -1,7 +1,8 @@
 buildscript {
     ext {
         kotlin_version = '1.0.0'
-        spring_boot_version = "1.4.0.BUILD-SNAPSHOT"
+        spring_boot_version = '1.4.0.BUILD-SNAPSHOT'
+        h2_version = '1.4.190'
     }
 
     repositories {
@@ -43,12 +44,14 @@ sourceSets {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "org.springframework.boot:spring-boot-devtools"
+    compile "org.springframework.boot:spring-boot-starter-web:$spring_boot_version"
+    compile "org.springframework.boot:spring-boot-devtools:$spring_boot_version"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$spring_boot_version"
+    compile "com.h2database:h2:$h2_version"
 
     testCompile 'junit:junit:4.12'
 }
 
 springBoot {
-    mainClass = "sample.Application"
+    mainClass = "com.fatdaruma.Application"
 }
