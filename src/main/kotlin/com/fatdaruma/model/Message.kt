@@ -1,5 +1,7 @@
 package com.fatdaruma.model
 
+import com.fatdaruma.usecase.Success
+import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -15,14 +17,8 @@ data class Message (
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long = 0L
-)
+) : Success
 
-class MessageSeed() {
-    constructor(body: String) : this() {
-        this.body = body
-    }
-
-    var body: String = ""
-
-    fun apply(): Message = Message(body = body)
-}
+data class MessageSeed (
+        var body: String = ""
+) : Serializable
